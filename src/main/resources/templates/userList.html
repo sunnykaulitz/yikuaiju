@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>一块聚运维</title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link th:href="@{/css/dashboard.css}" rel="stylesheet">
+	</head>
+
+	<body>
+		<!--顶部导航栏-->
+		<div th:replace="~{commons/commons::topbar}" }></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<!--侧边栏-->
+				<div th:replace="~{commons/commons::siderbar(active='userList')}"></div>
+
+				<main role="main" class="col-md-11 ml-sm-auto col-lg-11 pt-3 px-4">
+					<!--查询栏-->
+					<div class="ibox-content" style="display: block;">
+						<form method="get" action="userList" >
+							<div class="row">
+								<div class="col-sm-3 m-b-xs">
+									<input type="text" name="nickName" placeholder="输入ID/昵称/手机号/标记内容搜索" th:field="*{user.nickName}">
+								</div>
+								<div class="col-sm-2 m-b-xs">
+									<select name="status" th:field="*{user.status}">
+										<option value="">--用户状态筛选--</option>  <!--th:selected选择框持续选中,页面跳转后不会刷新值-->
+										<option value="1" th:selected="${user.status==1}">正常</option>
+										<option value="2" th:selected="${user.status==2}">冻结</option>
+									</select>
+								</div>
+								<div class="col-sm-2 m-b-xs">
+									<select name="source" th:field="*{user.source}">
+										<option value="">--用户来源筛选--</option>  <!--th:selected选择框持续选中,页面跳转后不会刷新值-->
+										<option value="1" th:selected="${user.source==1}">小程序搜索</option>
+										<option value="2" th:selected="${user.source==2}">活动扫码</option>
+									</select>
+								</div>
+								<input type="submit" value="查询">
+							</div>
+						</form>
+					</div>
+					<br/>
+
+					<div class="table-responsive">
+						<table class="table table-striped table-sm">
+							<thead>
+							<tr>
+								<th>用户ID</th>
+								<th>昵称</th>
+								<th>性别</th>
+								<th>地区</th>
+								<th>手机号</th>
+								<th>加入时间</th>
+								<th>最近活跃时间</th>
+								<th>活跃天数</th>
+								<th>用户来源</th>
+								<th>加入群组数</th>
+								<th>状态</th>
+								<th>标记</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr  th:each="user : ${pageInfo.list}">
+								<td class="userid" th:text="${user.id}">id</td>
+								<td th:text="${user.nickName}">nickName</td>
+								<td th:text="${user.gender}">gender</td>
+								<td th:text="${user.city}">city</td>
+								<td th:text="${user.mobile}">mobile</td>
+								<td th:text="${user.creationtime}">creationtime</td>
+								<td th:text="${user.modifytime}">modifytime</td>
+								<td th:text="${user.activedays}">activedays</td>
+								<td th:text="${user.source}">source</td>
+								<td th:text="${user.groupcount}">groupcount</td>
+								<td th:text="${user.status}">status</td>
+								<td class="usermark" th:text="${user.mark}">mark</td>   <!--contenteditable="true"-->
+								<!--<td><a th:href="@{/toEdit(id=${user.id})}">操作</a></td>-->
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<!--显示分页信息-->
+					<p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总 <span th:text="${pageInfo.pages}"></span> 页,共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+					<a th:href="@{/hello/userList}">首页</a>
+					<a th:href="@{/hello/userList(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+					<a th:href="@{/hello/userList(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+					<a th:href="@{/hello/userList(pageNum=${pageInfo.pages})}">尾页</a>
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/js/popper.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/js/jquery-3.1.1.js}" ></script>
+		<!--<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>-->
+		<!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+		<!--<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>-->
+		<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">-->
+		<!--<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>-->
+
+		<!-- Icons -->
+		<script type="text/javascript" th:src="@{/js/feather.min.js}" ></script>
+		<script>
+			feather.replace();
+
+
+			$(function(){
+				<!--给表格里面每一个td添加一个dblclick事件-->
+				$(".usermark").dblclick(function(){
+					var userid = $(this).parents("tr").find(".userid").text();
+					<!--1.先拿到这个td原来的值，然后将这个td变成一个input:text,并且原来的值不动 -->
+					var oldmark = $(this).text();
+					var oInput = $("<input type='text' value='"+oldmark+"'/>");
+					$(this).html(oInput);
+					oInput.focus();
+
+					<!--2.失去焦点，这个td变为原来的text，value为修改过后的value-->
+					oInput.blur(function(a){
+						var mark = oInput.val();
+						if(mark==null&&oldmark!= null || oldmark==null&&mark!= null || oldmark!=mark ){
+							$.ajax({
+								//请求方式
+								type : "POST",
+								//请求的媒体类型
+								contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+								//请求地址
+								url : "updateUserMark",
+								//数据，json字符串
+								data : {
+									"userid": userid,
+									"mark": mark
+								},
+								//请求成功
+								success : function(result) {
+									oInput.parent().html(oInput.val());
+								},
+								//请求失败，包含具体的错误信息
+								error : function(e){
+									oInput.parent().html(oldmark);
+									alert("保存失败！");
+								}
+							});
+						}else{
+							oInput.parent().html(mark);
+						}
+					});
+				});
+			});
+
+		</script>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,117 @@
+.icon-user {
+	background-image: url(../../static/images/icons/user.png) !important;
+}
+
+.icon-user-add {
+	background-image: url(../../static/images/icons/user_add.gif) !important;
+}
+
+.icon-save {
+	background-image: url(../../static/images/icons/disk.png) !important;
+}
+
+.icon-cancel {
+	background-image: url(../../static/images/icons/cross.gif) !important;
+}
+
+.icon-grid {
+	background-image: url(../../static/images/icons/grid.png) !important;
+}
+
+.icon-add {
+	background-image: url(../../static/images/icons/add.gif) !important;
+}
+
+.icon-delete {
+	background-image: url(../../static/images/icons/delete.gif) !important;
+}
+
+.icon-edit {
+	background-image: url(../../static/images/icons/cog_edit.png) !important;
+}
+
+.icon-image {
+	background-image: url(../../static/images/icons/image_add.png) !important;
+}
+
+.icon-accept {
+	background-image: url(../../static/images/icons/accept.png) !important;
+}
+
+.icon-reset {
+	background-image: url(../../static/images/icons/undo_blue.png) !important;
+}
+
+.icon-search {
+    background-image: url(../../static/images/icons/look.png) !important;
+}
+
+.icon-reset {
+    background-image: url(../../static/images/icons/cancel.png) !important;
+}
+
+.icon-pictures {
+	background-image: url(../../static/images/icons/pictures.png) !important;
+}
+
+.icon-export {
+	background-image: url(../../static/images/icons/disk_upload.png) !important;
+}
+.icon-import {
+	background-image: url(../../static/images/icons/disk_download.png) !important;
+}
+.icon-pay {
+	background-image: url(../../static/images/icons/coins_add.png) !important;
+}
+
+.icon-single{
+	background-image: url(../../static/images/icons/single.png) !important;
+}
+
+.icon-multi {
+	background-image: url(../../static/images/icons/multi.png) !important;
+}
+
+.icon-sup {
+	background-image: url(../../static/images/icons/sup.png) !important;
+}
+
+.icon-open{
+	background-image: url(../../static/images/icons/open.png) !important;
+}
+
+.icon-close {
+	background-image: url(../../static/images/icons/close.png) !important;
+}
+
+.icon-zw {
+	background-image: url(../../static/images/icons/zw.png) !important;
+}
+
+.icon-add-right {
+    background-image: url(../../static/images/icons/two_arrow_right.png) !important;
+}
+.icon-bursh {
+	background-image: url(../../static/images/icons/brush.png) !important;
+}
+.icon-comment_edit {
+    background-image: url(../../static/images/icons/comment_edit.png) !important;
+}
+.icon-email {
+    background-image: url(../../static/images/icons/notice.png) !important;
+}
+.icon-upload {
+    background-image: url(../../static/images/icons/upload.png) !important;
+}
+.icon-show-pic {
+    background-image: url(../../static/images/icons/pictures.png) !important;
+}
+.icon-showlist {
+	background-image: url(../../static/images/icons/adsearch.png) !important;
+}
+.icon-addline {
+    background-image: url(../../static/images/icons/new_row.png) !important;
+}
+.icon-export {
+    background-image: url(../../static/images/icons/export.png) !important;
+}

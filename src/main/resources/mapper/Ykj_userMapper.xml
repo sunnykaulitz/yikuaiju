@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yikuaiju.mapper.Ykj_userMapper">
+  <resultMap id="BaseResultMap" type="com.example.yikuaiju.bean.Ykj_user">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="avatarUrl" jdbcType="VARCHAR" property="avatarurl" />
+    <result column="sessionkey" jdbcType="VARCHAR" property="sessionkey" />
+    <result column="creationtime" jdbcType="TIMESTAMP" property="creationtime" />
+    <result column="modifytime" jdbcType="TIMESTAMP" property="modifytime" />
+    <result column="unionkey" jdbcType="VARCHAR" property="unionkey" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="wechatAccount" jdbcType="VARCHAR" property="wechataccount" />
+    <result column="source" jdbcType="INTEGER" property="source" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, openid, nickName, gender, language, city, province, country, avatarUrl, sessionkey, 
+    creationtime, modifytime, unionkey, mark, mobile, wechatAccount, source, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ykj_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ykj_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.yikuaiju.bean.Ykj_user">
+    insert into ykj_user (id, openid, nickName, 
+      gender, language, city, 
+      province, country, avatarUrl, 
+      sessionkey, creationtime, modifytime, 
+      unionkey, mark, mobile, 
+      wechatAccount, source, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{language,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{avatarurl,jdbcType=VARCHAR}, 
+      #{sessionkey,jdbcType=VARCHAR}, #{creationtime,jdbcType=TIMESTAMP}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{unionkey,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{wechataccount,jdbcType=VARCHAR}, #{source,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.yikuaiju.bean.Ykj_user">
+    insert into ykj_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="avatarurl != null">
+        avatarUrl,
+      </if>
+      <if test="sessionkey != null">
+        sessionkey,
+      </if>
+      <if test="creationtime != null">
+        creationtime,
+      </if>
+      <if test="modifytime != null">
+        modifytime,
+      </if>
+      <if test="unionkey != null">
+        unionkey,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="wechataccount != null">
+        wechatAccount,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarurl != null">
+        #{avatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionkey != null">
+        #{sessionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="creationtime != null">
+        #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unionkey != null">
+        #{unionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechataccount != null">
+        #{wechataccount,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.yikuaiju.bean.Ykj_user">
+    update ykj_user
+    <set>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarurl != null">
+        avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionkey != null">
+        sessionkey = #{sessionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="creationtime != null">
+        creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null">
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unionkey != null">
+        unionkey = #{unionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechataccount != null">
+        wechatAccount = #{wechataccount,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.yikuaiju.bean.Ykj_user">
+    update ykj_user
+    set openid = #{openid,jdbcType=VARCHAR},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      language = #{language,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+      sessionkey = #{sessionkey,jdbcType=VARCHAR},
+      creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      unionkey = #{unionkey,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      wechatAccount = #{wechataccount,jdbcType=VARCHAR},
+      source = #{source,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

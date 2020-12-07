@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yikuaiju.mapper.Ykj_playerMapper">
+  <resultMap id="BaseResultMap" type="com.example.yikuaiju.bean.Ykj_player">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="gameid" jdbcType="INTEGER" property="gameid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="playername" jdbcType="VARCHAR" property="playername" />
+    <result column="jointime" jdbcType="TIMESTAMP" property="jointime" />
+    <result column="playstatus" jdbcType="INTEGER" property="playstatus" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+    <result column="isshare" jdbcType="TINYINT" property="isshare" />
+    <result column="gamerank" jdbcType="INTEGER" property="gamerank" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, gameid, userid, playername, jointime, playstatus, ts, isshare, gamerank
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ykj_player
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ykj_player
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.yikuaiju.bean.Ykj_player">
+    insert into ykj_player (id, gameid, userid, 
+      playername, jointime, playstatus, 
+      ts, isshare, gamerank
+      )
+    values (#{id,jdbcType=INTEGER}, #{gameid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{playername,jdbcType=VARCHAR}, #{jointime,jdbcType=TIMESTAMP}, #{playstatus,jdbcType=INTEGER}, 
+      #{ts,jdbcType=TIMESTAMP}, #{isshare,jdbcType=TINYINT}, #{gamerank,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.yikuaiju.bean.Ykj_player">
+    insert into ykj_player
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gameid != null">
+        gameid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="playername != null">
+        playername,
+      </if>
+      <if test="jointime != null">
+        jointime,
+      </if>
+      <if test="playstatus != null">
+        playstatus,
+      </if>
+      <if test="ts != null">
+        ts,
+      </if>
+      <if test="isshare != null">
+        isshare,
+      </if>
+      <if test="gamerank != null">
+        gamerank,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gameid != null">
+        #{gameid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null">
+        #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="jointime != null">
+        #{jointime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playstatus != null">
+        #{playstatus,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isshare != null">
+        #{isshare,jdbcType=TINYINT},
+      </if>
+      <if test="gamerank != null">
+        #{gamerank,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.yikuaiju.bean.Ykj_player">
+    update ykj_player
+    <set>
+      <if test="gameid != null">
+        gameid = #{gameid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null">
+        playername = #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="jointime != null">
+        jointime = #{jointime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playstatus != null">
+        playstatus = #{playstatus,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null">
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isshare != null">
+        isshare = #{isshare,jdbcType=TINYINT},
+      </if>
+      <if test="gamerank != null">
+        gamerank = #{gamerank,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.yikuaiju.bean.Ykj_player">
+    update ykj_player
+    set gameid = #{gameid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      playername = #{playername,jdbcType=VARCHAR},
+      jointime = #{jointime,jdbcType=TIMESTAMP},
+      playstatus = #{playstatus,jdbcType=INTEGER},
+      ts = #{ts,jdbcType=TIMESTAMP},
+      isshare = #{isshare,jdbcType=TINYINT},
+      gamerank = #{gamerank,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

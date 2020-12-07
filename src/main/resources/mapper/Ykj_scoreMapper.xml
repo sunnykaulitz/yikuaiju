@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yikuaiju.mapper.Ykj_scoreMapper">
+  <resultMap id="BaseResultMap" type="com.example.yikuaiju.bean.Ykj_score">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="setid" jdbcType="INTEGER" property="setid" />
+    <result column="playerid" jdbcType="INTEGER" property="playerid" />
+    <result column="iswin" jdbcType="TINYINT" property="iswin" />
+    <result column="score" jdbcType="DECIMAL" property="score" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, setid, playerid, iswin, score, ts
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ykj_score
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ykj_score
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.yikuaiju.bean.Ykj_score">
+    insert into ykj_score (id, setid, playerid, 
+      iswin, score, ts)
+    values (#{id,jdbcType=INTEGER}, #{setid,jdbcType=INTEGER}, #{playerid,jdbcType=INTEGER}, 
+      #{iswin,jdbcType=TINYINT}, #{score,jdbcType=DECIMAL}, #{ts,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.yikuaiju.bean.Ykj_score">
+    insert into ykj_score
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="setid != null">
+        setid,
+      </if>
+      <if test="playerid != null">
+        playerid,
+      </if>
+      <if test="iswin != null">
+        iswin,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="ts != null">
+        ts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="setid != null">
+        #{setid,jdbcType=INTEGER},
+      </if>
+      <if test="playerid != null">
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="iswin != null">
+        #{iswin,jdbcType=TINYINT},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.yikuaiju.bean.Ykj_score">
+    update ykj_score
+    <set>
+      <if test="setid != null">
+        setid = #{setid,jdbcType=INTEGER},
+      </if>
+      <if test="playerid != null">
+        playerid = #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="iswin != null">
+        iswin = #{iswin,jdbcType=TINYINT},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="ts != null">
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.yikuaiju.bean.Ykj_score">
+    update ykj_score
+    set setid = #{setid,jdbcType=INTEGER},
+      playerid = #{playerid,jdbcType=INTEGER},
+      iswin = #{iswin,jdbcType=TINYINT},
+      score = #{score,jdbcType=DECIMAL},
+      ts = #{ts,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

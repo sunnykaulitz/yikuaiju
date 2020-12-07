@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yikuaiju.mapper.Ykj_gameMapper">
+  <resultMap id="BaseResultMap" type="com.example.yikuaiju.bean.Ykj_game">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="creationtime" jdbcType="TIMESTAMP" property="creationtime" />
+    <result column="endtime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="personnum" jdbcType="INTEGER" property="personnum" />
+    <result column="taketime" jdbcType="VARCHAR" property="taketime" />
+    <result column="gcount" jdbcType="INTEGER" property="gcount" />
+    <result column="gstatus" jdbcType="INTEGER" property="gstatus" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+    <result column="modifytime" jdbcType="TIMESTAMP" property="modifytime" />
+    <result column="invalid" jdbcType="TINYINT" property="invalid" />
+    <result column="isshare" jdbcType="TINYINT" property="isshare" />
+    <result column="finisher" jdbcType="INTEGER" property="finisher" />
+    <result column="formtype" jdbcType="INTEGER" property="formtype" />
+    <result column="sharetimes" jdbcType="INTEGER" property="sharetimes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, creationtime, endtime, address, personnum, taketime, gcount, gstatus, creator, 
+    ts, modifytime, invalid, isshare, finisher, formtype, sharetimes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ykj_game
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ykj_game
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.yikuaiju.bean.Ykj_game">
+    insert into ykj_game (id, name, creationtime, 
+      endtime, address, personnum, 
+      taketime, gcount, gstatus, 
+      creator, ts, modifytime, 
+      invalid, isshare, finisher, 
+      formtype, sharetimes)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{creationtime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, #{personnum,jdbcType=INTEGER}, 
+      #{taketime,jdbcType=VARCHAR}, #{gcount,jdbcType=INTEGER}, #{gstatus,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{ts,jdbcType=TIMESTAMP}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{invalid,jdbcType=TINYINT}, #{isshare,jdbcType=TINYINT}, #{finisher,jdbcType=INTEGER}, 
+      #{formtype,jdbcType=INTEGER}, #{sharetimes,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.yikuaiju.bean.Ykj_game">
+    insert into ykj_game
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="creationtime != null">
+        creationtime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="personnum != null">
+        personnum,
+      </if>
+      <if test="taketime != null">
+        taketime,
+      </if>
+      <if test="gcount != null">
+        gcount,
+      </if>
+      <if test="gstatus != null">
+        gstatus,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="ts != null">
+        ts,
+      </if>
+      <if test="modifytime != null">
+        modifytime,
+      </if>
+      <if test="invalid != null">
+        invalid,
+      </if>
+      <if test="isshare != null">
+        isshare,
+      </if>
+      <if test="finisher != null">
+        finisher,
+      </if>
+      <if test="formtype != null">
+        formtype,
+      </if>
+      <if test="sharetimes != null">
+        sharetimes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="creationtime != null">
+        #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="personnum != null">
+        #{personnum,jdbcType=INTEGER},
+      </if>
+      <if test="taketime != null">
+        #{taketime,jdbcType=VARCHAR},
+      </if>
+      <if test="gcount != null">
+        #{gcount,jdbcType=INTEGER},
+      </if>
+      <if test="gstatus != null">
+        #{gstatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalid != null">
+        #{invalid,jdbcType=TINYINT},
+      </if>
+      <if test="isshare != null">
+        #{isshare,jdbcType=TINYINT},
+      </if>
+      <if test="finisher != null">
+        #{finisher,jdbcType=INTEGER},
+      </if>
+      <if test="formtype != null">
+        #{formtype,jdbcType=INTEGER},
+      </if>
+      <if test="sharetimes != null">
+        #{sharetimes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.yikuaiju.bean.Ykj_game">
+    update ykj_game
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="creationtime != null">
+        creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="personnum != null">
+        personnum = #{personnum,jdbcType=INTEGER},
+      </if>
+      <if test="taketime != null">
+        taketime = #{taketime,jdbcType=VARCHAR},
+      </if>
+      <if test="gcount != null">
+        gcount = #{gcount,jdbcType=INTEGER},
+      </if>
+      <if test="gstatus != null">
+        gstatus = #{gstatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null">
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null">
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalid != null">
+        invalid = #{invalid,jdbcType=TINYINT},
+      </if>
+      <if test="isshare != null">
+        isshare = #{isshare,jdbcType=TINYINT},
+      </if>
+      <if test="finisher != null">
+        finisher = #{finisher,jdbcType=INTEGER},
+      </if>
+      <if test="formtype != null">
+        formtype = #{formtype,jdbcType=INTEGER},
+      </if>
+      <if test="sharetimes != null">
+        sharetimes = #{sharetimes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.yikuaiju.bean.Ykj_game">
+    update ykj_game
+    set name = #{name,jdbcType=VARCHAR},
+      creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      personnum = #{personnum,jdbcType=INTEGER},
+      taketime = #{taketime,jdbcType=VARCHAR},
+      gcount = #{gcount,jdbcType=INTEGER},
+      gstatus = #{gstatus,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      ts = #{ts,jdbcType=TIMESTAMP},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      invalid = #{invalid,jdbcType=TINYINT},
+      isshare = #{isshare,jdbcType=TINYINT},
+      finisher = #{finisher,jdbcType=INTEGER},
+      formtype = #{formtype,jdbcType=INTEGER},
+      sharetimes = #{sharetimes,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

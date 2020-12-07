@@ -1,0 +1,54 @@
+server:
+  port: 80  #配置程序端口，默认为8080
+  session-timeout: 30   #用户绘画session过期时间，以秒为单位
+  connection-timeout: 60000 #超时连接
+  servlet:
+    context-path: /yikuaiju   #项目名 配置默认访问路径，默认为/
+  tomcat.max-threads: 1000
+  tomcat.uri-encoding: UTF-8
+
+spring:
+  datasource:
+    name: ykj_first_db  #数据库名
+    url: jdbc:mysql://42.192.207.85:3306/ykj_first_db?serverTimezone=GMT%2b8 #url
+    #name: my_first_db  #数据库名
+    #url: jdbc:mysql://localhost:3306/my_first_db?serverTimezone=GMT%2b8 #url
+    username: root  #数据库用户名
+    password: 123456  #数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库链接驱动com.mysql.jdbc.Diver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 120000  #不能小于30秒，否则默认回到1800秒
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    open-in-view: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss    #指定date输出格式为yyyy-MM-dd HH:mm:ss；
+    time-zone: GMT+8
+  mvc:
+    static-path-pattern: /**
+  resources:
+        static-locations: classpath:/static/,classpath:/META-INF/resources/,classpath:/resources/,classpath:/public/
+
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #配置映射文件
+  type-aliases-package: com.example.yikuaiju.bean #配置实体类
+  configuration:
+    call-setters-on-nulls: true #设置返回字段不为空，前端不报错
+    map-underscore-to-camel-case: true #设置下划线转驼峰
+    type-aliases-package: com.example.yikuaiju.bean  #通过包设置映射类的别名
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql到控制台
+
+
+pagehelper:                #分页插件
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params:
